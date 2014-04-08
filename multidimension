@@ -1,0 +1,49 @@
+<?php
+$a=array(
+1=>array(101,'sanjay','karonjiya'),
+2=>array(102,'atul','vishwakarma'),
+3=>array(103,'sachin','patil')
+);
+
+foreach($a as $v)
+{
+  $as=array();
+ foreach($v as $V)
+ {
+ is_string($V)?$as[]="'$V'":$as[]=$V;
+ }
+ echo "insert into users values (".implode(',',$as).")";
+ echo"<br>";
+}
+
+
+array_walk_recursive($a,'print_arr');
+echo"<br><br><br><br><br>Recursion example";
+ echo"<br>";
+recur($a);
+
+function print_arr($item,$key)
+{
+echo $item;
+echo "<br/>";
+}
+
+
+function recur($a)
+{
+foreach($a as $v)  
+{
+if(is_array($v))
+recur($v);
+else
+is_string($v)?$as[]="'$v'":$as[]=$v;
+} 
+if(isset($as)) echo "insert into users values (".implode(',',$as).")";
+ echo"<br>";
+}
+
+
+
+
+
+?>
